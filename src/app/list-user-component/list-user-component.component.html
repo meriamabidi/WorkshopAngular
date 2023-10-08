@@ -1,0 +1,53 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="main-box clearfix">
+        <div class="table-responsive">
+          <!-- Recherche :
+            ********** recherche selon categorie ***********
+           <input type="text" [(ngModel)]="search" >
+           -->
+          <table class="table user-list">
+            <thead>
+            <tr>
+              <th><span>User</span></th>
+              <th><span>Created</span></th>
+              <th class="text-center"><span>Category</span></th>
+              <th><span>Email</span></th>
+              <th>&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody  *ngFor="let i of listUser;let j=index">
+
+            <tr *ngIf="search==i.accountCategory || search==''">
+
+
+              <td>
+                <img src="{{i.picture}}" alt="">
+                <a href="#" class="user-link">{{i.firstName}}  {{i.lastName}}</a>
+                <span class="user-subhead">{{i.profession}}</span>
+              </td>
+              <td>
+                {{i.birthDate}}
+              </td>
+              <td class="text-center">
+                <span class="label label-default">{{i.accountCategory}}</span>
+              </td>
+              <td>
+                <a href="#">{{i.email}}</a>
+              </td>
+              <td style="width: 20%;">
+                <input type="submit" value="delete" [disabled]="i.accountCategory==='Admin'" (click)="deleteUser(j)">
+              </td>
+
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
