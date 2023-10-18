@@ -1,10 +1,10 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {NotFoundPageComponentComponent} from "./not-found-page-component/not-found-page-component.component";
-import {HomeComponentComponent} from "./home-component/home-component.component";
-import {MainProductComponentComponent} from "./main-product-component/main-product-component.component";
-import {MainUserComponentComponent} from "./main-user-component/main-user-component.component";
-import {MainProviderComponentComponent} from "./main-provider-component/main-provider-component.component";
+import {NotFoundPageComponentComponent} from "./shared/not-found-page-component/not-found-page-component.component";
+import {HomeComponentComponent} from "./main/home-component/home-component.component";
+import {MainProductComponentComponent} from "./main/main-product-component/main-product-component.component";
+import {MainUserComponentComponent} from "./main/main-user-component/main-user-component.component";
+import {MainProviderComponentComponent} from "./main/main-provider-component/main-provider-component.component";
 import {ListUserComponentComponent} from "./list-user-component/list-user-component.component";
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponentComponent},
   {
     path: 'users', loadChildren: () =>
-      import('./user/user.module').then(m => m.UserModule)
+      import('./manageUser/user/user.module').then(m => m.UserModule)
   },
   {
     path: 'products', loadChildren: () =>
