@@ -11,22 +11,24 @@ import { MainProductComponentComponent } from './main-product-component/main-pro
 import { MainProviderComponentComponent } from './main-provider-component/main-provider-component.component';
 import { NotFoundPageComponentComponent } from './not-found-page-component/not-found-page-component.component';
 import {AppRoutingModule} from "./app-routing.module";
+import { UserModule } from './user/user.module';
+import { ProductModule } from './product/product.module';
+import { ProviderModule } from './provider/provider.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListUserComponentComponent,
     HeaderComponentsComponent,
     HomeComponentComponent,
-    MainUserComponentComponent,
-    MainProductComponentComponent,
-    MainProviderComponentComponent,
     NotFoundPageComponentComponent
   ],
     imports: [
         BrowserModule,
         FormsModule,
-        AppRoutingModule
+        AppRoutingModule,
+        UserModule,
+        ProductModule,
+        ProviderModule
     ],
   providers: [],
   bootstrap: [AppComponent]

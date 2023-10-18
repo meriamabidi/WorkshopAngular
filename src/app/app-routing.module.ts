@@ -9,19 +9,41 @@ import {ListUserComponentComponent} from "./list-user-component/list-user-compon
 
 const routes: Routes = [
 
-  {path:'',component:HomeComponentComponent},
-  {path:'mainProduct',component:MainProductComponentComponent},
-  {path:'mainUser',component:MainUserComponentComponent, children:[
-      {path:':Category/Customer',component:ListUserComponentComponent},
-    ]
+  //apres l'ajout des modules + changement fel headercomponents.html
 
+  {path: 'home', component: HomeComponentComponent},
+  {
+    path: 'users', loadChildren: () =>
+      import('./user/user.module').then(m => m.UserModule)
   },
-  {path:'mainProvider',component:MainProviderComponentComponent},
-  {path:'**',component:NotFoundPageComponentComponent},
+  {
+    path: 'products', loadChildren: () =>
+      import('./product/product.module').then(m => m.ProductModule)
+  },
+  {
+    path: 'providers', loadChildren: () =>
+      import('./provider/provider.module').then(m => m.ProviderModule)
+  },
+  {path: '**', component: NotFoundPageComponentComponent},
 
-  ];
+
+  //Les routes avant lajout des modules pour chaque component
+  /*
+    {path:'',component:HomeComponentComponent},
+    {path:'mainProduct',component:MainProductComponentComponent},
+    {path:'mainUser',component:MainUserComponentComponent, children:[
+        {path:':Category/Customer',component:ListUserComponentComponent},
+      ]
+
+    },
+    {path:'mainProvider',component:MainProviderComponentComponent},
+    {path:'**',component:NotFoundPageComponentComponent},
+  */
+];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
