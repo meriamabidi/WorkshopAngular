@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {UserServiceService} from "../user/user-service.service";
+import {User} from "../../model/User";
 
 @Component({
   selector: 'app-add-user',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent {
+  constructor(private s: UserServiceService) {
+  }
+
+  u = new User();
+
+  addUser(f: User) {
+    this.s.addUser(f);
+  }
 
 }

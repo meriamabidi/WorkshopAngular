@@ -1,0 +1,8 @@
+/* In your component's CSS file or global stylesheet */
+.form-container {
+  border: 1px solid #ccc; /* Border style and color */
+  padding: 20px; /* Padding around the form */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #f7f7f7; /* Background color */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow */
+}

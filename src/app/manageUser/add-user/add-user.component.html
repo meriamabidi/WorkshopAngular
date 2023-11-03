@@ -1,1 +1,53 @@
-<p>add-user works!</p>
+<div class="form-container">
+
+<form #f="ngForm" (ngSubmit)="addUser(f.value)" novalidate>
+  <label>First Name</label>
+  <input type="text" name="firstName" [(ngModel)]="u.firstName" required pattern="[a-zA-Z]{3,}" #firstName="ngModel">
+  <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+    <div *ngIf="firstName.errors?.['required']">First Name is required.</div>
+    <div *ngIf="firstName.errors?.['pattern']">First Name must contain at least 3 letters and only letters are
+      allowed.
+    </div>
+  </div>
+  <br>
+  <label>Last Name</label>
+  <input type="text" name="lastName" [(ngModel)]="u.lastName" required pattern="[a-zA-Z]{3,}" #lastName="ngModel">
+  <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+    <div *ngIf="lastName.errors?.['required']">Last Name is required.</div>
+    <div *ngIf="lastName.errors?.['pattern']">Last Name must contain at least 3 letters and only letters are allowed.
+    </div>
+  </div>
+  <br>
+  <label>Birth Date</label>
+  <input type="text" name="birthDate" [(ngModel)]="u.birthDate" #birthDate="ngModel">
+  <br>
+  <label>Email</label>
+  <input type="email" name="email" [(ngModel)]="u.email" pattern="^[a-zA-Z0-9._-]+@gmail.com" #email="ngModel">
+  <div *ngIf="email.invalid && (email.dirty || email.touched)">
+    <div *ngIf="email.errors?.['pattern']">Email must end with '@gmail.com'.</div>
+  </div>
+  <br>
+  <label>Password</label>
+  <input type="password" name="password" [(ngModel)]="u.password" pattern="^[a-zA-Z0-9]{8,}" #password="ngModel">
+  <div *ngIf="password.invalid && (password.dirty || password.touched)">
+    <div *ngIf="password.errors?.['pattern']">Password must contain at least 8 characters and only consist of lowercase
+      and uppercase letters and numbers.
+    </div>
+  </div>
+  <br>
+  <label>Profession</label>
+  <input type="text" name="profession" [(ngModel)]="u.profession" #profession="ngModel">
+  <br>
+  <label>Account Category</label>
+  <input type="text" name="accountCategory" [(ngModel)]="u.accountCategory" [ngModelOptions]="{standalone: true}"
+         #accountCategory="ngModel">
+  <div *ngIf="accountCategory.invalid && (accountCategory.dirty || accountCategory.touched)">
+    <div *ngIf="u.accountCategory !== 'Customer'">Account Category must be 'Customer'.</div>
+  </div>
+  <br>
+  <label>Picture</label>
+  <input type="text" name="picture" [(ngModel)]="u.picture" #picture="ngModel">
+  <br>
+  <input type="submit" value="Save" [disabled]="f.invalid" (click)="addUser(f.value)">
+</form>
+</div>

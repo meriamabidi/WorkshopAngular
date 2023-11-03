@@ -87,5 +87,9 @@ export class UserServiceService {
     return this.i;
   }
 
+  addUser(data:User){
+    this.list.push(data);
+    return         alert('Added Successfully');
 
+  }
 }
